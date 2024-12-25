@@ -1,0 +1,56 @@
+﻿@using MySensive.EntityLayer.Entities
+@model List<Article>
+@{
+    ViewData["Title"] = "ArticleList";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<br />
+
+<div class="col-md-12">
+    <div class="white_shd full margin_bottom_30">
+        <div class="full graph_head d-flex align-items-center justify-content-between">
+            <div class="heading1 margin_0">
+                <h2>Yazılarım</h2>
+            </div>
+            <a href="/Article/CreateArticle/" class="btn cur-p btn-success custom-button" style="margin-right:70px;">Yeni Yazı Ekle</a>
+        </div>
+
+        <div class="full progress_bar_inner">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="msg_list_main">
+                        <ul class="msg_list">
+                            @foreach (var item in Model)
+                            {
+                                <li>
+                                    <!-- Sol kısım: Başlık, açıklama ve tarih -->
+                                    <div class="left_section">
+                                        <span class="name_user">@item.Title </span>
+                                        <span class="msg_user">@item.Description.Substring(0, 30)...</span>
+                                        <br />
+                                        <span style="color:orangered" class="time_ago">@item.CreatedDate.ToString("dd-MMM-yyyy")</span>
+                                    </div>
+
+                                    <!-- Sağ kısım: Dropdown menü -->
+                                    <span class="dropdown_section">
+                                        <div class="dropdown dropleft">
+                                            <button type="button" class="btn cur-p btn-warning dropdown-toggle" data-toggle="dropdown">Düzenle</button>
+                                            <div class="dropdown-menu">
+                                                <a class="dropdown-item" href="/Author/Article/DetailArticle/@item.ArticleId">Görüntüle</a>
+                                                <a class="dropdown-item" href="/Article/EditArticle/@item.ArticleId">Güncelle</a>
+                                                <a class="dropdown-item" href="/Article/DeleteArticle/@item.ArticleId">Sil</a>
+                                            </div>
+                                        </div>
+                                    </span>
+                                </li>
+                            }
+                        </ul>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

@@ -1,0 +1,24 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+@await Component.InvokeAsync("_FrontHeadComponentPartial")
+<body>
+    <!--================Header Menu Area =================-->
+    @await Component.InvokeAsync("_FrontNavbarComponentPartial")
+    <main class="site-main">
+        <!--================Header Menu Area =================-->
+        @await Component.InvokeAsync("_FrontBlogComponentPartial")
+        @RenderBody()
+
+        <!-- Start Blog Post Siddebar -->
+        @await Component.InvokeAsync("_FrontTagComponentPartial")
+    </main>
+    <!--================ End Blog Post Area =================-->
+    <!--================ Start Footer Area =================-->
+    @await Component.InvokeAsync("_FrontFooterComponentPartial")
+
+</body>
+</html>
